@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<TabPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.module_3_assignment_03.HelloController">
+   <tabs>
+      <Tab text="Maze_1_tab">
+         <content>
+            <AnchorPane prefHeight="258.0" prefWidth="382.0">
+               <children>
+                  <ImageView fx:id="Maze_1" fitHeight="281.0" fitWidth="501.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/maze.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Car" fitHeight="21.0" fitWidth="59.0" layoutX="20.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/car2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Robot" fitHeight="17.0" fitWidth="16.0" layoutX="4.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/robot.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Maze_2_tab">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="Maze_2" fitHeight="288.0" fitWidth="385.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/maze2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+   </tabs>
+</TabPane>
