@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <TabPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.module_3_assignment_03.HelloController">
    <tabs>
       <Tab text="Maze_1_tab">
@@ -18,7 +17,7 @@
                         <Image url="@../../../images/maze.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="Car" fitHeight="21.0" fitWidth="59.0" layoutX="20.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="car_one" fitHeight="21.0" fitWidth="59.0" layoutX="20.0" layoutY="167.0" onKeyPressed="#user_move" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/car2.png" />
                      </image>
