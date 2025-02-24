@@ -23,8 +23,8 @@ public class Car {
         switch (direction) {
             case "right" -> imageView.setRotate(180);
             case "left" -> imageView.setRotate(180);
-            case "up" -> imageView.setRotate(180);
-            case "down" -> imageView.setRotate(180);
+            case "up" -> imageView.setRotate(-90);
+            case "down" -> imageView.setRotate(0);
             default -> throw new IllegalStateException("Unexpected value: " + direction);
         }
     }
