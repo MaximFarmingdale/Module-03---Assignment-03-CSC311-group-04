@@ -17,12 +17,13 @@ public class Car {
         this.direction = "right";
     }
     //commenting this method as it doesnt work yet.
-    /*
+
     public Color getPixelColor() {
         double x = imageView.getLayoutX();
         double y = imageView.getLayoutY();
         javafx.scene.image.PixelReader pixelReader = imageView.getImage().getPixelReader();
-        Color color = new Color(0,0,1.0);
+        Color color = pixelReader.getColor((int)Math.round(x), (int)Math.round(y));
+        System.out.println(color);
         color = switch (direction) {
             case "right" -> pixelReader.getColor((int) x + 3, (int) y);
             case "left" -> pixelReader.getColor((int) x - 3, (int) y);
@@ -33,7 +34,7 @@ public class Car {
 
         return color;
     }
-    */
+
     // moved the image of the car depending on what key you press
     public void move(KeyEvent event) {
         //switch case to get what input the user typed and translate it to a direction
