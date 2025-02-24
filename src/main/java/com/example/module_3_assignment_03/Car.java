@@ -31,22 +31,27 @@ public class Car {
 
 
     public boolean validpath() {
-        double x = imageView.getX(); // Get proper coordinates
-        double y = imageView.getY();
-        javafx.scene.image.PixelReader pixelReader = imageView.getImage().getPixelReader();
-        Color color = pixelReader.getColor((int)Math.round(x), (int)Math.round(y));
-        System.out.println(color);
-        color = switch (direction) {
-            case "right" -> pixelReader.getColor((int) x + 3, (int) y);
-            case "left" -> pixelReader.getColor((int) x - 3, (int) y);
-            case "up" -> pixelReader.getColor((int) x, (int) y + 3);
-            case "down" -> pixelReader.getColor((int) x, (int) y - 3);
-            default -> color;
-        };
+        PixelReader pixelReader = imageView.getImage().getPixelReader();
+
+        int imgWidth = (int) imageView.getImage().getWidth();
+        int imgHeight = (int) imageView.getImage().getHeight();
+
+        int x = (int) Math.round(imageView.getLayoutX());
+        int y = (int) Math.round(imageView.getLayoutY());
+        switch (direction) {
+            case "right" -> x += 3;
+            case "left" -> x -= 3;
+            case "up" -> y -= 3;
+            case "down" -> y += 3;
+        }
+        Color color = pixelReader.getColor(x, y);
+        System.out.println("Color at (" + x + ", " + y + "): " + color.toString());
+
         if (color.equals(Color.web("0x00000000"))) {
             System.out.println("true");
             return true;
         }
+
         System.out.println("false");
         return false;
     }
