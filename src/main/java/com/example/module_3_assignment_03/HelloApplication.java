@@ -20,6 +20,7 @@ public class HelloApplication extends Application {
         scene.setOnKeyPressed(controller::user_move);
         stage.setScene(scene);
         stage.show();
+        stage.requestFocus();
     }
 
 

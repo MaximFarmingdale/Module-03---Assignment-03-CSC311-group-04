@@ -1,6 +1,7 @@
 package com.example.module_3_assignment_03;
 
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
@@ -17,12 +18,24 @@ public class Car {
         this.direction = "right";
     }
     //commenting this method as it doesnt work yet.
-    /*
-    public Color getPixelColor() {
-        double x = imageView.getLayoutX();
-        double y = imageView.getLayoutY();
+
+    public void rotate() {
+        switch (direction) {
+            case "right" -> imageView.setRotate(180);
+            case "left" -> imageView.setRotate(180);
+            case "up" -> imageView.setRotate(180);
+            case "down" -> imageView.setRotate(180);
+            default -> throw new IllegalStateException("Unexpected value: " + direction);
+        }
+    }
+
+
+    public boolean validpath() {
+        double x = imageView.getX(); // Get proper coordinates
+        double y = imageView.getY();
         javafx.scene.image.PixelReader pixelReader = imageView.getImage().getPixelReader();
-        Color color = new Color(0,0,1.0);
+        Color color = pixelReader.getColor((int)Math.round(x), (int)Math.round(y));
+        System.out.println(color);
         color = switch (direction) {
             case "right" -> pixelReader.getColor((int) x + 3, (int) y);
             case "left" -> pixelReader.getColor((int) x - 3, (int) y);
@@ -30,30 +43,42 @@ public class Car {
             case "down" -> pixelReader.getColor((int) x, (int) y - 3);
             default -> color;
         };
-
-        return color;
+        if (color.equals(Color.web("0x00000000"))) {
+            System.out.println("true");
+            return true;
+        }
+        System.out.println("false");
+        return false;
     }
-    */
+
     // moved the image of the car depending on what key you press
     public void move(KeyEvent event) {
         //switch case to get what input the user typed and translate it to a direction
         //makes sure to also set the direction which we will use to make sure the car is in bounds
         switch (event.getCode()) {
             case W:
-                imageView.setLayoutY(imageView.getLayoutY() - speed);
                 direction = "up";
+                if (validpath()) {
+                    imageView.setLayoutY(imageView.getLayoutY() - speed);
+                }
                 break;
             case S:
-                imageView.setLayoutY(imageView.getLayoutY() + speed);
                 direction = "down";
+                if (validpath()) {
+                    imageView.setLayoutY(imageView.getLayoutY() + speed);
+                }
                 break;
             case A:
-                imageView.setLayoutX(imageView.getLayoutX() - speed);
                 direction = "left";
+                if (validpath()) {
+                    imageView.setLayoutX(imageView.getLayoutX() - speed);
+                }
                 break;
             case D:
-                imageView.setLayoutX(imageView.getLayoutX() + speed);
                 direction = "right";
+                if (validpath()) {
+                    imageView.setLayoutX(imageView.getLayoutX() + speed);
+                }
                 break;
         }
     }
