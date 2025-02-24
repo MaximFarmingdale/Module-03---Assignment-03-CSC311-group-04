@@ -24,7 +24,7 @@ public class HelloController {
     //Initializer for the car, needed to make sure the image is loaded
     public void initialize() {
         if (car_one != null) {
-            vehicle = new Car(car_one, 10, true);
+            vehicle = new Car(car_one, 3, true);
         }
     }
     //calls the internal move method of the car
@@ -35,5 +35,6 @@ public class HelloController {
             return;
         }
     }
+
 }
 

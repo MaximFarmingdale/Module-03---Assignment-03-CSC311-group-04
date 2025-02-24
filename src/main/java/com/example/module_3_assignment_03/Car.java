@@ -32,26 +32,36 @@ public class Car {
 
     public boolean validpath() {
         PixelReader pixelReader = imageView.getImage().getPixelReader();
-
-        int imgWidth = (int) imageView.getImage().getWidth();
-        int imgHeight = (int) imageView.getImage().getHeight();
-
         int x = (int) Math.round(imageView.getLayoutX());
-        int y = (int) Math.round(imageView.getLayoutY());
+        int y = (int) Math.round(imageView.getLayoutY()) ;
         switch (direction) {
-            case "right" -> x += 3;
-            case "left" -> x -= 3;
-            case "up" -> y -= 3;
-            case "down" -> y += 3;
+            case "right":
+                x += 10;
+                break;
+            case "left":
+                x -= 10;
+                break;
+            case "up":
+                y -= 10;
+                x += 3;
+                break;
+            case "down":
+                y += 10;
+                x += 3;
+                break;
         }
-        Color color = pixelReader.getColor(x, y);
-        System.out.println("Color at (" + x + ", " + y + "): " + color.toString());
+        try {
+            Color color = pixelReader.getColor(x, y);
+            System.out.println("Color at (" + x + ", " + y + "): " + color.toString());
 
-        if (color.equals(Color.web("0x00000000"))) {
-            System.out.println("true");
-            return true;
+            // Compare colors properly
+            if (color.equals(Color.web("0x00000000" )) || color.equals(Color.web("0x000000ff"))) {
+                System.out.println("true");
+                return true;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("false (out of bounds) - Exception caught");
         }
-
         System.out.println("false");
         return false;
     }
