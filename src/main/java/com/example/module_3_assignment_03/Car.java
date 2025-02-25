@@ -21,6 +21,15 @@ public class Car {
     }
     public void setIn_Use(boolean in_use) {
         this.in_use = in_use;
+        if (!in_use) {
+            imageView.setVisible(false);
+            imageView.setManaged(false);
+            imageView.setLayoutX(-4);
+            imageView.setLayoutY(167);
+            return;
+        }
+        imageView.setVisible(true);
+        imageView.setManaged(true);
     }
 
     public boolean getIn_Use() {
@@ -41,7 +50,6 @@ public class Car {
                 break;
 
             case "left":
-                // Flip horizontally when facing left
                 imageView.setScaleX(-1);
                 imageView.setScaleY(1);
                 imageView.setRotationAxis(new javafx.geometry.Point3D(0, 0, 1));
@@ -70,15 +78,12 @@ public class Car {
     public boolean validpath() {
         PixelReader pixelReader = Maze.getImage().getPixelReader();
 
-        // Get maze image dimensions
         double imageWidth = Maze.getImage().getWidth();
         double imageHeight = Maze.getImage().getHeight();
 
-        // Get ImageView displayed dimensions
         double imageViewWidth = Maze.getFitWidth();
         double imageViewHeight = Maze.getFitHeight();
 
-        // Compute scale factors
         double scaleX = imageWidth / imageViewWidth;
         double scaleY = imageHeight / imageViewHeight;
 

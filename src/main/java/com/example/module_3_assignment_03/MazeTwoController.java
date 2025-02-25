@@ -1,5 +1,13 @@
 package com.example.module_3_assignment_03;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +19,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-public class HelloController {
+public class MazeTwoController {
+
+
 
     @FXML
     private ImageView car_one;

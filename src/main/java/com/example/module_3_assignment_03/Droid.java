@@ -22,6 +22,15 @@ public class Droid {
 
     public void setIn_Use(boolean in_use) {
         this.in_use = in_use;
+        if (!in_use) {
+            imageView.setVisible(false);
+            imageView.setManaged(false);
+            imageView.setLayoutX(4);
+            imageView.setLayoutY(169);
+            return;
+        }
+        imageView.setVisible(true);
+        imageView.setManaged(true);
     }
 
     public boolean getIn_Use() {
@@ -32,35 +41,30 @@ public class Droid {
     public boolean validpath() {
         PixelReader pixelReader = Maze.getImage().getPixelReader();
 
-        // Get maze image dimensions
         double imageWidth = Maze.getImage().getWidth();
         double imageHeight = Maze.getImage().getHeight();
-
-        // Get ImageView displayed dimensions
         double imageViewWidth = Maze.getFitWidth();
         double imageViewHeight = Maze.getFitHeight();
 
-        // Compute scale factors
         double scaleX = imageWidth / imageViewWidth;
         double scaleY = imageHeight / imageViewHeight;
-
         double relativeX = imageView.getLayoutX() - Maze.getLayoutX();
         double relativeY = imageView.getLayoutY() - Maze.getLayoutY();
 
-        int x = (int) ((relativeX + 55) * scaleX);
-        int y = (int) ((relativeY + 10) * scaleY);
+        int x = (int) ((relativeX + 30) * scaleX);
+        int y = (int) ((relativeY + 5) * scaleY);
         switch (direction) {
             case "right":
                 x += (int) (17 * scaleX);
                 break;
-            case "left":
-                x -= (int) (17 * scaleX);
+            case "left": // decrease
+                x -= (int) (25 * scaleX);
                 break;
             case "up":
                 y -= (int) (6 * scaleY);
                 break;
             case "down":
-                y += (int) (6 * scaleY);
+                y += (int) (13 * scaleY);//increase
                 break;
             default:
                 System.out.println("Invalid direction: " + direction);

@@ -18,7 +18,7 @@
                         <Image url="@../../../images/maze.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="car_one" fitHeight="20.0" fitWidth="55.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="car_one" fitHeight="20.0" fitWidth="55.0" layoutX="-4.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/car2.png" />
                      </image>
@@ -28,8 +28,8 @@
                         <Image url="@../../../images/robot.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="ctrlDroid" layoutX="125.0" layoutY="281.0" mnemonicParsing="false" text="Droid" />
-                  <Button fx:id="ctrlCar" layoutX="172.0" layoutY="281.0" mnemonicParsing="false" text="Car" />
+                  <Button fx:id="ctrlDroid" layoutX="125.0" layoutY="281.0" mnemonicParsing="false" onAction="#use_droid" text="Droid" />
+                  <Button fx:id="ctrlCar" layoutX="172.0" layoutY="281.0" mnemonicParsing="false" onAction="#use_car" text="Car" />
                   <Button fx:id="animate" layoutX="209.0" layoutY="281.0" mnemonicParsing="false" text="Animation" />
                </children>
             </AnchorPane>
