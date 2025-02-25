@@ -59,7 +59,7 @@ public class HelloController {
         }
     }
     //debugging method
-    /*
+
     @FXML
     void getpixel(MouseEvent event) {
         int x = (int) Math.round(event.getX());
@@ -69,7 +69,7 @@ public class HelloController {
         PixelReader pixelReader = Maze_1.getImage().getPixelReader();
         System.out.println("The color is " + pixelReader.getColor(x, y));
     }
-     */
+
 
     //on button press activates the droid
     @FXML
@@ -84,4 +84,7 @@ public class HelloController {
         droid.setIn_Use(false);
     }
 
+    public void animateDroid() {
+        droid.animateDroid();
+    }
 }

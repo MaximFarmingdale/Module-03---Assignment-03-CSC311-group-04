@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         HelloController controller = loader.getController();
         //setting up the scene
         Scene scene = new Scene(root);
+        stage.setTitle("MAZE");
         scene.setOnKeyPressed(controller::user_move);
         stage.setScene(scene);
         stage.show();

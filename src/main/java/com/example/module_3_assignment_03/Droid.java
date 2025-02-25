@@ -1,9 +1,13 @@
 package com.example.module_3_assignment_03;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 public class Droid {
     ImageView imageView;
@@ -11,6 +15,8 @@ public class Droid {
     boolean in_use;
     String direction;
     ImageView Maze;
+    double droid_x;
+    double droid_y;
 
     public Droid(ImageView imageView, int speed,boolean in_use, ImageView Maze) {
         this.imageView = imageView;
@@ -118,5 +124,33 @@ public class Droid {
                 }
                 break;
         }
+    }
+
+
+    public void animateDroid() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> moveDroid()));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+
+    public void moveDroid() {
+        if (wallDetected(imageView.getLayoutX(), imageView.getLayoutY())) {
+            imageView.setLayoutX(imageView.getLayoutX() - 1);
+        }
+
+        else {
+            imageView.setLayoutX(imageView.getLayoutX() + 1);
+        }
+    }
+
+    public boolean wallDetected(double x, double y) {
+        if (x >= 0 && y >= 0) {
+            Color pixelColor = Maze.getImage().getPixelReader().getColor((int) x, (int) y);
+            System.out.println(pixelColor);
+            if (pixelColor.equals(Color.web("0x005399ff" )))
+                return true;
+        }
+        return false;
     }
 }
