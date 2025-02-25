@@ -10,14 +10,15 @@ public class Car {
     double speed;
     boolean in_use;
     String direction;
+    ImageView Maze;
 
-    public Car(ImageView imageView, int speed, boolean in_use) {
+    public Car(ImageView imageView, int speed, boolean in_use, ImageView Maze) {
         this.imageView = imageView;
         this.speed = speed;
         this.in_use = in_use;
         this.direction = "right";
+        this.Maze = Maze;
     }
-    //commenting this method as it doesnt work yet.
 
     public void rotate() {
         switch (direction) {
@@ -31,39 +32,57 @@ public class Car {
 
 
     public boolean validpath() {
-        PixelReader pixelReader = imageView.getImage().getPixelReader();
-        int x = (int) Math.round(imageView.getLayoutX());
-        int y = (int) Math.round(imageView.getLayoutY()) ;
+        PixelReader pixelReader = Maze.getImage().getPixelReader();
+
+        // Get maze image dimensions
+        double imageWidth = Maze.getImage().getWidth();
+        double imageHeight = Maze.getImage().getHeight();
+
+        // Get ImageView displayed dimensions
+        double imageViewWidth = Maze.getFitWidth();
+        double imageViewHeight = Maze.getFitHeight();
+
+        // Compute scale factors
+        double scaleX = imageWidth / imageViewWidth;
+        double scaleY = imageHeight / imageViewHeight;
+
+        double relativeX = imageView.getLayoutX() - Maze.getLayoutX();
+        double relativeY = imageView.getLayoutY() - Maze.getLayoutY();
+
+        int x = (int) ((relativeX + 55) * scaleX);
+        int y = (int) ((relativeY + 10) * scaleY);
         switch (direction) {
             case "right":
-                x += 10;
+                x += (int) (17 * scaleX);
                 break;
             case "left":
-                x -= 10;
+                x -= (int) (17 * scaleX);
                 break;
             case "up":
-                y -= 10;
-                x += 3;
+                y -= (int) (6 * scaleY);
                 break;
             case "down":
-                y += 10;
-                x += 3;
+                y += (int) (6 * scaleY);
                 break;
+            default:
+                System.out.println("Invalid direction: " + direction);
+                return false;
         }
+
         try {
             Color color = pixelReader.getColor(x, y);
             System.out.println("Color at (" + x + ", " + y + "): " + color.toString());
 
             // Compare colors properly
-            if (color.equals(Color.web("0x00000000" )) || color.equals(Color.web("0x000000ff"))) {
-                System.out.println("true");
-                return true;
+            if (color.equals(Color.web("0x005399ff" )) ) {// || color.equals(Color.web("0x000000ff"))
+                System.out.println("false");
+                return false;
             }
         } catch (IndexOutOfBoundsException e) {
             System.out.println("false (out of bounds) - Exception caught");
         }
-        System.out.println("false");
-        return false;
+        System.out.println("true");
+        return true;
     }
 
     // moved the image of the car depending on what key you press

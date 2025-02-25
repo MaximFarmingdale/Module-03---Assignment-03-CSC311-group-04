@@ -10,14 +10,14 @@
    <tabs>
       <Tab text="Maze_1_tab">
          <content>
-            <AnchorPane prefHeight="258.0" prefWidth="382.0">
+            <AnchorPane onMouseClicked="#getpixel" prefHeight="258.0" prefWidth="382.0">
                <children>
-                  <ImageView fx:id="Maze_1" fitHeight="281.0" fitWidth="501.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Maze_1" fitHeight="281.0" fitWidth="507.0" onMouseClicked="#getpixel" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/maze.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="car_one" fitHeight="20.0" fitWidth="55.0" layoutX="14.0" layoutY="167.0" onKeyPressed="#user_move" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="car_one" fitHeight="20.0" fitWidth="55.0" layoutX="14.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/car2.png" />
                      </image>
