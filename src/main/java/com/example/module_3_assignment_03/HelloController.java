@@ -58,7 +58,8 @@ public class HelloController {
             return;
         }
     }
-
+    //debugging method
+    /*
     @FXML
     void getpixel(MouseEvent event) {
         int x = (int) Math.round(event.getX());
@@ -68,11 +69,15 @@ public class HelloController {
         PixelReader pixelReader = Maze_1.getImage().getPixelReader();
         System.out.println("The color is " + pixelReader.getColor(x, y));
     }
+     */
+
+    //on button press activates the droid
     @FXML
     void use_droid(ActionEvent event) {
         droid.setIn_Use(true);
         vehicle.setIn_Use(false);
     }
+    //on button press activates the car
     @FXML
     void use_car(ActionEvent event) {
         vehicle.setIn_Use(true);

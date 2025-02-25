@@ -73,9 +73,10 @@ public class Droid {
 
         try {
             Color color = pixelReader.getColor(x, y);
-            System.out.println("Color at (" + x + ", " + y + "): " + color.toString());
+            //debug line to check if the color is being read right
+            //System.out.println("Color at (" + x + ", " + y + "): " + color.toString());
 
-            // Compare colors properly
+            // compares colors
             if (color.equals(Color.web("0x005399ff" )) ) {// || color.equals(Color.web("0x000000ff"))
                 System.out.println("false");
                 return false;
