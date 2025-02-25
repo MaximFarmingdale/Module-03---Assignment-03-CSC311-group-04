@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
@@ -22,11 +23,14 @@
                         <Image url="@../../../images/car2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="Robot" fitHeight="17.0" fitWidth="16.0" layoutX="4.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="droidImgView" fitHeight="17.0" fitWidth="16.0" layoutX="4.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/robot.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="ctrlDroid" layoutX="125.0" layoutY="281.0" mnemonicParsing="false" text="Droid" />
+                  <Button fx:id="ctrlCar" layoutX="172.0" layoutY="281.0" mnemonicParsing="false" text="Car" />
+                  <Button fx:id="animate" layoutX="209.0" layoutY="281.0" mnemonicParsing="false" text="Animation" />
                </children>
             </AnchorPane>
          </content>
